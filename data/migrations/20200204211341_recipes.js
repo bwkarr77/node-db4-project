@@ -21,6 +21,7 @@ exports.up = function(knex) {
           .integer("recipe_id")
           .unsigned()
           .notNullable()
+          //reference column id, from recipes table
           .references("id")
           .inTable("recipes")
           .onUpdate("CASCADE")
@@ -33,16 +34,18 @@ exports.up = function(knex) {
           .integer("recipe_id")
           .unsigned()
           .notNullable()
-          .references("recipes.id")
-          // .inTable("recipes")
+          //reference column id, from recipes table
+          .references("id")
+          .inTable("recipes")
           .onUpdate("CASCADE")
           .onDelete("RESTRICT");
         tbl
           .integer("ingredient_id")
           .unsigned()
           .notNullable()
-          .references("ingredients.id")
-          // .inTable("ingredients")
+          //reference column id, from ingredients table
+          .references("id")
+          .inTable("ingredients")
           .onUpdate("CASCADE")
           .onDelete("RESTRICT");
         tbl.float("QTY", [0]).notNullable();
